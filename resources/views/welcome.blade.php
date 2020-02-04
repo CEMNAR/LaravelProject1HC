@@ -97,6 +97,9 @@
                                 <li>
                                     <a href="hackernews">Blog Hackernews</a>
                                 </li>
+                                <li>
+                                    <a href="sendemail">Contact Us</a>
+                                </li>
                             </ul>
                         </div>
                     </nav>

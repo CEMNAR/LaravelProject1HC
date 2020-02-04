@@ -3,11 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.0/dist/css/uikit.min.css" />
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.0/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.0/dist/js/uikit-icons.min.js"></script>
@@ -25,6 +26,17 @@
 
         .full-height {
             height: 100vh;
+        }
+
+        .box{
+            width:600px;
+            margin:0 auto;
+            border:1px solid #ccc;
+        }
+        .has-error
+        {
+            border-color:#cc0000;
+            background-color:#ffff99;
         }
 
         .flex-center {
@@ -95,69 +107,58 @@
                 <ul class="uk-navbar-nav">
                     <a class="uk-navbar-item uk-logo" href="/"><img src="asset/img/logo2.png"  width="60px"></a>
                     <li>
-                        <a href="hackernews">Blog Hackernews</a>
+                        <a href="hackernews" style="font-size:1.40rem !important">Blog Hackernews</a>
                     </li>
                     <li>
-                        <a href="sendemail">Contact Us</a>
+                        <a href="sendemail" style="font-size:1.40rem !important">Contact Us</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </div>
 
-<div class="uk-container">
-        <h1>Api Hackernews</h1>
-        <h3>Check now all of latest news of the Hackernews Website.</h3>
-    <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
+        <br>
+        <br>
 
-@foreach ($articles as $article)
-
-        <div>
-
-            <div class="uk-card uk-card-small uk-card-secondary">
-
-                <div class="uk-card-header">
-                    <div class="uk-grid-small uk-flex-middle" uk-grid>
-                        <div class="uk-width-expand">
-                            <h3 class="uk-card-title">{{ $article->title }}</h3>
-                            <p class="uk-text-meta uk-margin-remove-top">{{ $article->time_ago }}</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="uk-card-body">
-                    <p>User : {{ $article->user }}</p>
-                    <p>Number of points : {{ $article->points }}</p>
-                    <p>Comments {{ $article->comments_count }}</p>
-                </div>
-
-                <div class="uk-card-footer">
-                    <a href="{{ $article->url }}" class="uk-button uk-button-text"><h5>Click here for access to article</h5></a>
-                </div>
-
-            </div>
-
+        <div class="container box">
+    <h3 align="center">Contact Us for any information</h3><br />
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
-
-@endforeach
+    @endif
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
+    <form method="post" action="{{url('sendemail/send')}}">
+        {{ csrf_field() }}
+        <div class="form-group">
+            <label>Enter Your Name</label>
+            <input type="text" name="name" class="form-control" value="" />
+        </div>
+        <div class="form-group">
+            <label>Enter Your Email</label>
+            <input type="text" name="email" class="form-control" value="" />
+        </div>
+        <div class="form-group">
+            <label>Enter Your Message</label>
+            <textarea name="message" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="submit" name="send" class="btn btn-info" value="Send" />
+        </div>
+    </form>
 </div>
-    </div>
         <br>
         <br>
         <br>
-            <footer class="uk-card-secondary">
-                <nav class="uk-container uk-navbar">
-                    <div class="footer-container">
-                        <p>
-                            LaravelProject1 by Cem
-                        </p>
-                    </div>
-                </nav>
-            </footer>
-
-<!-- UIkit CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.0/dist/css/uikit.min.css" />
-
-<!-- UIkit JS -->
-<script src="https://cdn.jsdelivr.net/npm/uikit@3.3.0/dist/js/uikit.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/uikit@3.3.0/dist/js/uikit-icons.min.js"></script>
+</body>
+</html>

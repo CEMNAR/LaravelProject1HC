@@ -17,3 +17,7 @@ Route::get('hackernews', 'HackernewsController@index');
 
 Route::view('contact', 'contact');
 
+Route::get('/sendemail', 'SendEmailController@index');
+
+Route::post('/sendemail/send', 'SendEmailController@send');
+

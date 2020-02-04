@@ -177,7 +177,8 @@
             <p>All of pics with our hashtag #hotelcard in Instagram</p><span uk-icon="instagram"></span>
         </div>
     <hr>
-        <div class='sk-ww-instagram-hashtag-feed' data-embed-id='33947'>
+{{--        <div class='sk-ww-instagram-hashtag-feed' data-embed-id='33947'>--}}
+    <div class='sk-ww-instagram-hashtag-feed' data-embed-id='34001'></div>
         </div>
     <br>
     <br>
@@ -192,5 +193,6 @@
                     </nav>
                 </footer>
                 <script src='https://www.sociablekit.com/app/embed/instagram-hashtag-feed/widget.js'></script>
+{{--                <script src='https://www.sociablekit.com/app/embed/instagram-hashtag-feed/widget.js'></script>--}}
     </body>
 </html>

@@ -94,7 +94,7 @@
 
     <h1>Your pics of your visit at our Hotel partners it's important for us</h1>
         <div class="uk-text-center">
-            <p>All of pics with our hashtag #hotelcard in Instagram</p><span uk-icon="instagram"></span>
+            <p>All of pics with our hashtag #hotelcard in Instagram</p>
         </div>
     <hr>
     <div class='sk-ww-instagram-hashtag-feed' data-embed-id='34001'></div>
